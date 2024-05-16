@@ -30,17 +30,17 @@ jobs:
         id: cache-images
         uses: actions/cache@v4
         with:
-          path: ./exampleSite/content
+          path: themes/hugo-theme-gallery/exampleSite/content
           key: images-${{ hashFiles('exampleSite/content/**') }}
       - name: Download example images
         if: steps.cache-images.outputs.cache-hit != 'true'
-        working-directory: ./exampleSite
+        working-directory: themes/hugo-theme-gallery/exampleSite
         run: ./pull-images.sh
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
       - name: Build with Hugo
-        working-directory: ./exampleSite
+        working-directory: themes/hugo-theme-gallery/exampleSite
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
